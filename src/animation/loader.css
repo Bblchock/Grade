@@ -1,0 +1,98 @@
+/* Круг */
+.loader-border {
+  margin: 40px auto;
+  top: 50px;
+  width: 30px;
+  height: 30px;
+  border: 10px solid rgba(184, 0, 0);
+  border-radius: 50%;
+  border-bottom-color: transparent;
+}
+/* ------ */
+
+/* Кубики */
+.loader-wrapper {
+  margin: 40px auto;
+  width: 100px;
+  height: 50px;
+}
+
+.loader-wrapper > div {
+  display: inline-block;
+  position: relative;
+  background-color: green;
+  border-radius: 40%;
+}
+/* ------ */
+
+@keyframes loader-move {
+  0% {
+    left: 0%;
+  }
+  100% {
+    left: 100%;
+  }
+}
+
+@keyframes loader-size {
+  0% {
+    height: 15px;
+    width: 15px;
+  }
+  50% {
+    height: 25px;
+    width: 25px;
+  }
+  100% {
+    height: 15px;
+    width: 15px;
+  }
+}
+
+@keyframes loader-color {
+  0% {
+    background-color: rgb(0, 177, 0);
+  }
+  50% {
+    background-color: rgb(172, 73, 185);
+  }
+  100% {
+    background-color: rgb(90, 92, 224);
+  }
+}
+
+@keyframes loader-spin {
+  0% {
+    transform: rotate(0deg);
+  }
+
+  100% {
+    transform: rotate(360deg);
+  }
+}
+/* Круг */
+.loader-border {
+  animation: loader-spin 1s infinite linear;
+}
+/* ------ */
+
+/* Кубики */
+.loader-one {
+  animation: loader-move 1.5s infinite linear alternate 0.1s,
+    loader-size 1.5s infinite linear alternate 0.1s,
+    loader-color 1.5s infinite linear alternate 0.1s,
+    loader-spin 1.5s infinite linear 0.1s;
+}
+.loader-two {
+  animation: loader-move 1.5s infinite linear alternate 0.14s,
+    loader-size 1.5s infinite linear alternate 0.15s,
+    loader-color 1.5s infinite linear alternate 0.15s,
+    loader-spin 1.5s infinite linear 0.15s;
+}
+.loader-three {
+  animation: loader-move 1.5s infinite linear alternate 0.18s,
+    loader-size 1.5s infinite linear alternate 0.2s,
+    loader-color 1.5s infinite linear alternate 0.2s,
+    loader-spin 1.5s infinite linear 0.2s;
+}
+/* ------ */
