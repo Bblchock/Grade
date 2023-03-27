@@ -1,0 +1,19 @@
+.array-wrapper {
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+}
+
+.button-wrapper {
+  display: flex;
+}
+
+.button-wrapper > * {
+  border: 1px solid black;
+  background-color: aliceblue;
+  color: black;
+  padding: 5px;
+  border-radius: 5px;
+  margin: 15px 5px;
+}

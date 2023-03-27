@@ -3,12 +3,13 @@
   <head>
     <meta charset="UTF-8" />
     <title>Grade</title>
-    <link rel="stylesheet" href="./src/animation/style.css" />
-    <link rel="stylesheet" href="./src/animation/loader.css" />
-    <link rel="stylesheet" href="./src/transition/transition.css" />
-    <link rel="stylesheet" href="./src/media-query/media-query.css" />
-    <link rel="stylesheet" href="./src/flex/flex.css" />
-    <link rel="stylesheet" href="./src/grid/grid.css" />
+    <link rel="stylesheet" href="./app/src/tasks/css-1490/loader.css" />
+    <link rel="stylesheet" href="./app/src/tasks/css-1491/transition.css" />
+    <link rel="stylesheet" href="./app/src/tasks/css-1489/media-query.css" />
+    <link rel="stylesheet" href="./app/src/tasks/css-1487/flex.css" />
+    <link rel="stylesheet" href="./app/src/tasks/css-1488/grid.css" />
+    <link rel="stylesheet" href="./app/src/tasks/js-1493/date.css" />
+    <link rel="stylesheet" href="./app/src/tasks/js-1494/number.css" />
   </head>
   <body>
     <div id="all">
@@ -60,6 +61,26 @@
           <div>elem</div>
         </div>
       </section>
+      <section id="date">
+        Date
+        <div>До: <span class="date-before"></span></div>
+        <div>После: <span class="date-after"></span></div>
+        <div>После с Intl: <span class="date-after-intl"></span></div>
+      </section>
+      <section id="number">
+        Введите стоимость:
+        <input type="text" />
+        <div>
+          Custom:
+          <span class="custom"></span>
+        </div>
+        <div>
+          Intl:
+          <span class="intl"></span>
+        </div>
+      </section>
     </div>
+    <script src="./app/src/tasks/js-1493/index.js"></script>
+    <script src="./app/src/tasks/js-1494/index.js"></script>
   </body>
 </html>
