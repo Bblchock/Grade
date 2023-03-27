@@ -14,7 +14,7 @@ const Array = () => {
   const handleTaskOne = () => {
     let array = JSON.parse(inputState)
       .flat()
-      .filter(item => item > 0 && item % 2 === 0)
+      .filter(item => typeof item === "number" && item > 0 && item % 2 === 0)
       .sort((a, b) => {
         return b - a;
       });
@@ -26,11 +26,11 @@ const Array = () => {
   const handleTaskTwo = () => {
     let array = JSON.parse(inputState);
     let findNumbers = [];
-    array.forEach((item, id) => {
-      let bafore = array[id - 1];
-      let after = array[id + 1];
-      if (bafore % item === 0 && after % item === 0) {
-        findNumbers.push(bafore);
+    array.forEach((item, index) => {
+      let before = array[index - 1];
+      let after = array[index + 1];
+      if (before % item === 0 && after % item === 0) {
+        findNumbers.push(before);
         findNumbers.push(after);
       }
     });
