@@ -15,6 +15,8 @@ const Request = () => {
         if (response.status === 200) {
           setItems(response.data);
           setError(undefined);
+        } else {
+          setError("Что-то пошло не так");
         }
       })
       .catch(err => {

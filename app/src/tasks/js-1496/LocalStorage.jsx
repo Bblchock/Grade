@@ -2,33 +2,31 @@ import "./LocalStorage.css";
 import { useState } from "react";
 
 const LocalStorage = () => {
-  const [inputBanana, setInputBanana] = useState(
-    localStorage.getItem("banana") ?? ""
-  );
-  const [inputCucumber, setInputCucumber] = useState(
-    localStorage.getItem("cucumber") ?? ""
-  );
-  const [inputWatermelon, setInputWatermelon] = useState(
-    localStorage.getItem("watermelon") ?? ""
+  const [inputData, setInputData] = useState(
+    JSON.parse(localStorage.getItem("inputData")) ?? ""
   );
 
   const handleInput = event => {
     const inputId = event.target.id;
     const value = event.target.value;
+    let newValue;
     switch (inputId) {
       case "banana":
-        localStorage.setItem("banana", value);
-        setInputBanana(value);
+        newValue = { ...inputData, banana: value };
+        localStorage.setItem("inputData", JSON.stringify(newValue));
+        setInputData(newValue);
         break;
 
       case "cucumber":
-        localStorage.setItem("cucumber", value);
-        setInputCucumber(value);
+        newValue = { ...inputData, cucumber: value };
+        localStorage.setItem("inputData", JSON.stringify(newValue));
+        setInputData(newValue);
         break;
 
       case "watermelon":
-        localStorage.setItem("watermelon", value);
-        setInputWatermelon(value);
+        newValue = { ...inputData, watermelon: value };
+        localStorage.setItem("inputData", JSON.stringify(newValue));
+        setInputData(newValue);
         break;
 
       default:
@@ -45,7 +43,7 @@ const LocalStorage = () => {
           <input
             id="banana"
             type="text"
-            value={inputBanana}
+            value={inputData.banana}
             onChange={e => handleInput(e)}
           />
         </label>
@@ -55,7 +53,7 @@ const LocalStorage = () => {
           <input
             id="cucumber"
             type="text"
-            value={inputCucumber}
+            value={inputData.cucumber}
             onChange={e => handleInput(e)}
           />
         </label>
@@ -65,7 +63,7 @@ const LocalStorage = () => {
           <input
             id="watermelon"
             type="text"
-            value={inputWatermelon}
+            value={inputData.watermelon}
             onChange={e => handleInput(e)}
           />
         </label>
