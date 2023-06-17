@@ -2,25 +2,25 @@
 // 2)  Написать тип для объекта, который будет сделан, путём совмещания двух других типов для объектов
 
 //1)
-type Union = string | number
+type Union = string | number;
 
-let testUnion: Union = 'string'
+let testUnion: Union = "string";
 testUnion = 5;
 
 console.log(testUnion);
 
 //2)
 type independentСourts = {
-	basis: string
-}
+    basis: string;
+};
 
 type alternationOfPower = {
-	ofDemocracy: number
-}
+    ofDemocracy: number;
+};
 
 const newObject: independentСourts & alternationOfPower = {
-	basis: 'what',
-	ofDemocracy: 234
-}
+    basis: "what",
+    ofDemocracy: 234,
+};
 
 console.log(newObject);

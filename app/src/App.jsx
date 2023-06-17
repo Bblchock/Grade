@@ -1,16 +1,18 @@
-import LocalStorage from "./tasks/js-1496/LocalStorage";
-import Request from "./tasks/js-1495/Request";
-import Array from "./tasks/js-1492/Array";
+import LocalStorage from "./tasksJunior/js-1496/LocalStorage";
+import Request from "./tasksJunior/js-1495/Request";
+import Array from "./tasksJunior/js-1492/Array";
 import "./App.css";
+import { game } from "./tasksMiddle/class-js-1588/class.ts";
 
 function App() {
-  return (
-    <div className="wrapper">
-      <LocalStorage />
-      <Request />
-      <Array />
-    </div>
-  );
+    game(); //Драка классами task 1588
+    return (
+        <div className="wrapper">
+            <LocalStorage />
+            <Request />
+            <Array />
+        </div>
+    );
 }
 
 export default App;
