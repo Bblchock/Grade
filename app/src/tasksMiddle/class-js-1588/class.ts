@@ -67,15 +67,15 @@ const skillsList = {
 };
 
 export const game = () => {
-    const can = new Character("Can", 500, 50);
-    const canTwo = new PlayerCharacter("CanTwo", 300, 60, 200, skillsList);
-    const canThree = new PlayerCharacter("CanThree", 200, 70, 100, skillsList);
+    const player = new Character("player", 500, 50);
+    const playerTwo = new PlayerCharacter("playerTwo", 300, 60, 200, skillsList);
+    const playerThree = new PlayerCharacter("playerThree", 200, 70, 100, skillsList);
 
-    console.log(can.currentHealth, can.name + " хп");
-    console.log(canTwo.mana, canTwo.name + " mana");
-    console.log(canThree.mana, canThree.name + " mana");
+    console.log(player.currentHealth, player.name + " хп");
+    console.log(playerTwo.mana, playerTwo.name + " mana");
+    console.log(playerThree.mana, playerThree.name + " mana");
 
-    canTwo.useSkill(can, "oneShot");
-    canThree.useSkill(can, "healing");
-    canThree.useSkill(canTwo, "oneShot");
+    playerTwo.useSkill(player, "oneShot");
+    playerThree.useSkill(player, "healing");
+    playerThree.useSkill(playerTwo, "oneShot");
 };
