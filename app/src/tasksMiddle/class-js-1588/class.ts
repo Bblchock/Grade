@@ -54,15 +54,15 @@ class PlayerCharacter extends Character {
 const skillsList = {
     oneShot(target: Character) {
         target.takeDamage(this.power * 5);
-        console.log(this.name + " use oneShot on " + target.name);
-        console.log(target.currentHealth, target.name + " хп");
-        console.log(this.mana, this.name + " mana");
+        // console.log(this.name + " use oneShot on " + target.name);
+        // console.log(target.currentHealth, target.name + " хп");
+        // console.log(this.mana, this.name + " mana");
     },
     healing(target: Character) {
         target.heal(this.power * 3);
-        console.log(this.name + " use healing on " + target.name);
-        console.log(target.currentHealth, target.name + " хп");
-        console.log(this.mana, this.name + " mana");
+        // console.log(this.name + " use healing on " + target.name);
+        // console.log(target.currentHealth, target.name + " хп");
+        // console.log(this.mana, this.name + " mana");
     },
 };
 
@@ -71,9 +71,9 @@ export const game = () => {
     const playerTwo = new PlayerCharacter("playerTwo", 300, 60, 200, skillsList);
     const playerThree = new PlayerCharacter("playerThree", 200, 70, 100, skillsList);
 
-    console.log(player.currentHealth, player.name + " хп");
-    console.log(playerTwo.mana, playerTwo.name + " mana");
-    console.log(playerThree.mana, playerThree.name + " mana");
+    // console.log(player.currentHealth, player.name + " хп");
+    // console.log(playerTwo.mana, playerTwo.name + " mana");
+    // console.log(playerThree.mana, playerThree.name + " mana");
 
     playerTwo.useSkill(player, "oneShot");
     playerThree.useSkill(player, "healing");
