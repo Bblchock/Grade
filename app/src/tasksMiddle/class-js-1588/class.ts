@@ -1,19 +1,23 @@
-class Character {
-    name: string;
-    maxHealth: number;
-    currentHealth: number;
-    power: number;
+import { Skills } from "./enums";
+import { CharacterInterface, CharacterParamsType, PlayerCharacterInterface, skillsListType } from "./types";
+
+class Character implements CharacterInterface {
+    protected name: string;
+    protected maxHealth: number;
+    protected currentHealth: number;
+    protected power: number;
     constructor(name: string, health: number, power: number) {
         this.name = name;
         this.maxHealth = this.currentHealth = health;
         this.power = power;
     }
-    attack(target: Character): void {
+    attack(target: CharacterInterface): void {
         target.takeDamage(this.power);
     }
     heal(amount: number): void {
-        this.currentHealth =
-            this.currentHealth + amount > this.maxHealth ? this.maxHealth : this.currentHealth + amount;
+        const isReachedLimit = this.currentHealth + amount > this.maxHealth;
+        const amountAddition = this.currentHealth + amount;
+        this.currentHealth = isReachedLimit ? this.maxHealth : amountAddition;
     }
     takeDamage(amount: number): void {
         this.currentHealth = this.currentHealth - amount < 0 ? 0 : this.currentHealth - amount;
@@ -22,16 +26,15 @@ class Character {
         return this.currentHealth > 0;
     }
 }
-
-class PlayerCharacter extends Character {
-    constructor(name: string, health: number, power: number, mana: number, skills: object) {
+class PlayerCharacter extends Character implements PlayerCharacterInterface {
+    constructor(name: string, health: number, power: number, mana: number, skills: skillsListType) {
         super(name, health, power);
         this.skills = skills;
         this.mana = mana;
     }
-    skills: object;
-    mana: number;
-    useSkill(target: Character, skill: string): void {
+    protected skills: skillsListType;
+    protected mana: number;
+    useSkill(target: CharacterInterface, skill: string): void {
         if (this.mana < 50) {
             console.log("Мало маны");
             return;
@@ -39,7 +42,7 @@ class PlayerCharacter extends Character {
         this.mana -= 50;
         this.skills[skill].bind(this)(target);
     }
-    param(): object {
+    param(): CharacterParamsType {
         return {
             name: this.name,
             maxHealth: this.maxHealth,
@@ -51,31 +54,21 @@ class PlayerCharacter extends Character {
     }
 }
 
-const skillsList = {
-    oneShot(target: Character) {
+const skillsList: skillsListType = {
+    [Skills.OneShot](target: CharacterInterface) {
         target.takeDamage(this.power * 5);
-        // console.log(this.name + " use oneShot on " + target.name);
-        // console.log(target.currentHealth, target.name + " хп");
-        // console.log(this.mana, this.name + " mana");
     },
-    healing(target: Character) {
+    [Skills.Healing](target: CharacterInterface) {
         target.heal(this.power * 3);
-        // console.log(this.name + " use healing on " + target.name);
-        // console.log(target.currentHealth, target.name + " хп");
-        // console.log(this.mana, this.name + " mana");
     },
 };
 
-export const game = () => {
+export const game = (): void => {
     const player = new Character("player", 500, 50);
     const playerTwo = new PlayerCharacter("playerTwo", 300, 60, 200, skillsList);
     const playerThree = new PlayerCharacter("playerThree", 200, 70, 100, skillsList);
 
-    // console.log(player.currentHealth, player.name + " хп");
-    // console.log(playerTwo.mana, playerTwo.name + " mana");
-    // console.log(playerThree.mana, playerThree.name + " mana");
-
-    playerTwo.useSkill(player, "oneShot");
-    playerThree.useSkill(player, "healing");
-    playerThree.useSkill(playerTwo, "oneShot");
+    playerTwo.useSkill(player, Skills.OneShot);
+    playerThree.useSkill(player, Skills.Healing);
+    playerThree.useSkill(playerTwo, Skills.OneShot);
 };
